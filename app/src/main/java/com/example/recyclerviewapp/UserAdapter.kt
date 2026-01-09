@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recyclerviewapp.model.UserModel
 
-class UserAdapter(val userList : List<UserModel>) :
+class UserAdapter(val userList : MutableList<UserModel>) :
     RecyclerView.Adapter<UserAdapter.AdapterViewHolder>() {
 
 
@@ -40,6 +40,11 @@ class UserAdapter(val userList : List<UserModel>) :
         val userEmail = view.findViewById<TextView>(R.id.mail_text)
         val userAvatar = view.findViewById<ImageView>(R.id.user_avatar)
 
+    }
+    fun updateUsers(newUsers: List<UserModel>) {
+        userList.clear()
+        userList.addAll(newUsers)
+        notifyDataSetChanged()
     }
 
 }
